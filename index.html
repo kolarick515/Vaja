@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delitev mesečnih stroškov</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Delitev mesečnih stroškov: Kristjan & Katja</h1>
+      <p class="lead">
+        Vnesita mesečne podatke in aplikacija izračuna, kdo komu in koliko poravna.
+      </p>
+
+      <section class="card">
+        <h2>Osnovni podatki</h2>
+        <div class="grid">
+          <label>
+            Trgovina (Katja)
+            <input id="trgovinaKatja" type="number" min="0" step="0.01" value="0" />
+          </label>
+
+          <label>
+            Položnice (Kristjan)
+            <input id="polozniceKristjan" type="number" min="0" step="0.01" value="0" />
+          </label>
+
+          <label>
+            Otroški dodatek (prejme Kristjan)
+            <input id="otroskiDodatek" type="number" min="0" step="0.01" value="0" />
+          </label>
+
+          <label>
+            Strošek vrtca (plača Kristjan)
+            <input id="vrtec" type="number" min="0" step="0.01" value="0" />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Dodatni stroški</h2>
+          <button id="addExpense" type="button">+ Dodaj strošek</button>
+        </div>
+        <div id="additionalExpenses" class="stack"></div>
+      </section>
+
+      <section class="card">
+        <button id="calculate" type="button" class="primary">Izračunaj</button>
+      </section>
+
+      <section id="results" class="card hidden" aria-live="polite">
+        <h2>Rezultat</h2>
+        <div class="summary-grid">
+          <div>
+            <h3>Skupni izdatki</h3>
+            <p id="totalExpenses"></p>
+          </div>
+          <div>
+            <h3>Ciljni delež Katje</h3>
+            <p id="katjaTarget"></p>
+          </div>
+          <div>
+            <h3>Ciljni delež Kristjana</h3>
+            <p id="kristjanTarget"></p>
+          </div>
+          <div>
+            <h3>Dejansko plačala Katja</h3>
+            <p id="katjaActual"></p>
+          </div>
+          <div>
+            <h3>Dejansko plačal Kristjan</h3>
+            <p id="kristjanActual"></p>
+          </div>
+        </div>
+        <p id="settlement" class="settlement"></p>
+      </section>
+    </main>
+
+    <template id="expenseTemplate">
+      <div class="expense-row">
+        <input type="text" class="expense-name" placeholder="Opis stroška" />
+        <select class="expense-person">
+          <option value="Katja">Katja</option>
+          <option value="Kristjan">Kristjan</option>
+        </select>
+        <input type="number" class="expense-amount" min="0" step="0.01" value="0" />
+        <button type="button" class="remove">Odstrani</button>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
